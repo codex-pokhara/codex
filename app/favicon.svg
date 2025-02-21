@@ -1,0 +1,11 @@
+<svg viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+  <text x="50%" y="50%" 
+        dominant-baseline="middle" 
+        text-anchor="middle" 
+        font-family="'Geist', -apple-system, sans-serif"
+        font-size="72"
+        font-weight="700"
+        letter-spacing="2">
+    CODEX
+  </text>
+</svg>

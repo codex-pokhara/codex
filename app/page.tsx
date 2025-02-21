@@ -1,101 +1,93 @@
-import Image from "next/image";
+import { Geist } from "next/font/google"
+import { Github, Mail, Linkedin } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import Link from "next/link"
+
+const geist = Geist({
+  subsets: ["latin"],
+})
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const techStack = ["TypeScript", "React", "Next.js", "Node.js", "PostgreSQL", "Docker", "AWS", "Tailwind CSS"]
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <main className={`${geist.className} min-h-screen p-8 md:p-12 lg:p-24 space-y-16 max-w-6xl mx-auto`}>
+      {/* Header */}
+      <header className="space-y-4">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter">codex</h1>
+        <p className="text-lg text-muted-foreground max-w-2xl">
+          Building exceptional digital experiences with cutting-edge web technologies.
+        </p>
+        <div className="flex items-center gap-4 pt-2">
+          <Link href="mailto:contact@codex.dev" className="hover:text-primary">
+            <Mail className="w-5 h-5" />
+          </Link>
+          <Link href="https://github.com/codex" className="hover:text-primary">
+            <Github className="w-5 h-5" />
+          </Link>
+          <Link href="https://linkedin.com/company/codex" className="hover:text-primary">
+            <Linkedin className="w-5 h-5" />
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      {/* About */}
+      <section className="space-y-4">
+        <h2 className="text-2xl font-bold">About</h2>
+        <p className="text-muted-foreground max-w-3xl leading-relaxed">
+          We specialize in crafting modern web solutions that empower businesses to thrive in the digital age. Our
+          expertise in full-stack development, combined with a deep understanding of scalable architecture, enables us
+          to build robust applications that drive growth and innovation.
+        </p>
+      </section>
+
+      {/* Tech Stack */}
+      <section className="space-y-4">
+        <h2 className="text-2xl font-bold">Tech Stack</h2>
+        <div className="flex flex-wrap gap-2">
+          {techStack.map((tech) => (
+            <Badge key={tech} variant="secondary" className="text-sm">
+              {tech}
+            </Badge>
+          ))}
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="space-y-6">
+        <h2 className="text-2xl font-bold">Our Services</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Card className="pb-4">
+            <CardHeader>
+              <CardTitle>Web Development</CardTitle>
+              <CardDescription>
+                Creating scalable and performant web applications with modern frameworks and best practices.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="pb-4">
+            <CardHeader>
+              <CardTitle>API Development</CardTitle>
+              <CardDescription>Building robust and secure APIs that power your digital ecosystem.</CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="pb-4">
+            <CardHeader>
+              <CardTitle>Technical Consulting</CardTitle>
+              <CardDescription>
+                Expert guidance on architecture, technology selection, and best practices.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="pt-8 border-t text-sm text-muted-foreground">
+        <p>© {new Date().getFullYear()} Codex. All rights reserved.</p>
       </footer>
-    </div>
-  );
+    </main>
+  )
 }
+
